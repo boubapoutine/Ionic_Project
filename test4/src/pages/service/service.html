@@ -1,0 +1,61 @@
+<!--
+  Generated template for the ServicePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>service</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+-->
+<head>
+    <link href="assets/form.css" rel="stylesheet">
+    </head> 
+<ion-content >
+    
+          <ul *ngFor="let item of items"><h2>{{item.title}}</h2>
+        
+        
+        <div *ngFor="let item2 of item.elements">          
+            <img (click)="setService(item.title)" *ngIf="item2.type==='image'" [src]="item2.value"/>
+
+            
+                      
+        </div>
+      
+      
+    </ul>
+     
+
+
+  <!--
+    <ion-card *ngFor="let item of items">
+        <img [src]="item.value"/>
+        <ion-card-content>
+          <ion-card-title>
+           {{items.section}}
+           
+            </ion-card-title>
+          <p>
+            The most popular industrial group ever, and largely
+            responsible for bringing the music to a mass audience.
+          </p>
+        </ion-card-content>
+      </ion-card>
+  -->  
+      
+
+ <!--
+ 
+    <ion-item>
+    {{items?.title}}
+ </ion-item>  
+ -->   
+ 
+
+</ion-content>
