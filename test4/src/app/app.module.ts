@@ -9,6 +9,9 @@ import {HttpModule } from '@angular/http'
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { BaseddProvider } from '../providers/basedd/basedd';
+
+
 @NgModule({
   declarations: [
     MyApp,
@@ -30,7 +33,8 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    BaseddProvider
   ]
 })
 export class AppModule {}
