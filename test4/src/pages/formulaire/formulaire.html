@@ -27,14 +27,14 @@
       <legend *ngIf="item.title===currentService">
         {{item.title}}
       </legend>
-
+<!---
       <div *ngFor="let item2 of item.elements">
         <ion-input [(ngModel)]="item2.value" [ngModelOptions]="{standalone: true}" type="text" placeholder="{{item2.value}}"
           *ngIf="item2.type==='edit'"></ion-input>
 
         <div *ngIf="item2.type==='button'">
           <div style="float: left;" *ngFor="let buttonvalue of item2.value">
-            <button ion-button [(ngModel)]="item2.value" [ngModelOptions]="{standalone: true}" type="button" value="{{item2.value}}" *ngIf="item2.type==='button'">{{item2.value}}</button></div>
+            <button ion-button   type="button" value="{{item2.value}}" *ngIf="item2.type==='button'">{{item2.value}}</button></div>
         </div>
         
         <ion-label *ngIf="item2.type==='label'">{{item2.value}}</ion-label>
@@ -54,6 +54,34 @@
         </div>
 
       </div>
+    -->
+    <div *ngFor="let item2 of item.elements">
+
+
+
+      <ion-input [(ngModel)]="item2.value" [ngModelOptions]="{standalone: true}" type="text" placeholder="{{item2.value}}" *ngIf="item2.type==='edit'"></ion-input>
+      <div *ngIf="item2.type==='button'">
+        <div style="float: left;" *ngFor="let buttonvalue of item2.value">
+          <button ion-button type="button" value="{{item2.value}}" *ngIf="item2.type==='button'">{{item2.value}}</button></div>
+      </div>
+      <ion-label *ngIf="item2.type==='label'">{{item2.value}}</ion-label>
+
+      <div *ngIf="item2.type==='radioGroup'">
+        <div *ngFor="let radiovalue of item2.value">
+          <input [(ngModel)]="item2.section" [ngModelOptions]="{standalone: true}" name="{{item2.section}}" name="{{item2.section}}" type="radio" value="{{radiovalue}}">{{radiovalue}}
+
+        </div>
+      </div>
+
+
+      <div *ngIf="item2.type==='switch'">
+        <div *ngFor="let switchvalue of item2.value">
+          <ion-label *ngIf="item2.type==='switch'">Oui</ion-label>
+          <input [(ngModel)]="item2.section" [ngModelOptions]="{standalone: true}" name="{{item2.section}}" type="checkbox" value="{{switchvalue}}">
+        </div>
+      </div>
+
+    </div>
       <button ion-button type="submit" block clear (click)="save()">Valider</button>
     </form>
   </div>
