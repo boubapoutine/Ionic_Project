@@ -2,9 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Events } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
 import {BaseddProvider} from '../../providers/basedd/basedd';
-//import {FormulairePage} from '../../pages/formulaire/formulaire';
 
 /**
  * Generated class for the ResultatPage page.
@@ -23,7 +22,6 @@ export class ResultatPage {
   public currentService:String;
 
   constructor(public events: Events, public http: HttpClient,public navCtrl: NavController, public navParams: NavParams, public _baseddProvider: BaseddProvider) {
-    this.getData();
     events.subscribe('service:created', (x, time) => {
       // user and time are the same arguments passed in `events.publish(user, time)`
       this.currentService=x;
@@ -33,19 +31,27 @@ export class ResultatPage {
     let that = this;
     this._baseddProvider.service.subscribe((data)=> {that.items.push(data);},
     (err) => {console.error(err);});
-  }
 
-  getData(){
-    let url = 'assets/Data/service.json';
-    //let url = 'https://jsonplaceholder.typicode.com/photos';
-    let data: Observable<any> = this.http.get(url);
-    data.subscribe(result => {
-      
-      this.items = result.services;
-      console.log(result.services);
+  }
   
-  });
-  } 
+  // getData(){
+  //   // let url = 'https://test4-6b8bb.firebaseio.com/service.json';
+  //   // //let url = 'https://jsonplaceholder.typicode.com/photos';
+  //   // return this.http.get<any>(url)
+  //   // .subscribe((response: any[]) => {
+      
+  //   //   this.items = response;
+  //   //   console.log(this.items);
+  
+  //     let url = 'https://test4-6b8bb.firebaseio.com/service.json';
+  //     //let url = 'https://jsonplaceholder.typicode.com/photos';
+  //     let data: Observable<any> = this.http.get(url);
+  //     data.subscribe((response: any[]) => {
+        
+  //       this.items = response;
+  //       console.log(this.items);
+  // });
+  // } 
 
 
   ionViewDidLoad() {

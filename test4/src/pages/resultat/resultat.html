@@ -1,4 +1,4 @@
-<ion-header>
+ <ion-header>
   <ion-navbar *navbar>
     <ion-title>
       Resultat
@@ -9,20 +9,18 @@
 <ion-content padding class="resultat">
   <ion-list *ngIf="items">
     <ion-item *ngFor="let ser of items">
-      <form *ngIf="ser.title===currentService">
+      
         
-        <div *ngFor="let item2 of ser.elements">
-          <ion-input *ngIf="item2.type==='edit'" [(ngModel)]="item2.value" [ngModelOptions]="{standalone: true}">{{item2.value}}</ion-input>
-          <button ion-button *ngIf="item2.type==='button'" [(ngModel)]="item2.value" [ngModelOptions]="{standalone: true}">{{item2.value}}</button>
-          <ion-label *ngIf="item2.type==='label'">{{item2.value}}</ion-label>
-          <ion-input *ngIf="item2.type==='radioGroup'" [(ngModel)]="item2.section" [ngModelOptions]="{standalone: true}" 
-            name="{{item2.section}}">{{radiovalue}}</ion-input>
-          <ion-checkbox *ngIf="item2.type==='switch'" [(ngModel)]="item2.section" [ngModelOptions]="{standalone: true}"></ion-checkbox>
-        </div>
-      </form>
+        <div *ngFor="let item2 of ser">
+            <div *ngIf="item2.title=='Netflix'">
+            <div *ngFor="let item3 of item2.elements">              
+                  
+                  <span *ngIf="item3.section==='info'">{{item3.section}} : {{item3.value}}</span>
+                  </div>
+
+            </div>
+          </div>
     </ion-item>
     
   </ion-list>
-
-
 </ion-content>

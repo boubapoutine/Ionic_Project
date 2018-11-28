@@ -31,6 +31,7 @@ export class FormulairePage  {
       this.currentService=x;
       console.log('Welcome', x, 'at', time);
     });
+    //console.log('currente',this.currentService);
   }
 
   getData(){

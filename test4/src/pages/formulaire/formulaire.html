@@ -68,7 +68,7 @@
 
       <div *ngIf="item2.type==='radioGroup'">
         <div *ngFor="let radiovalue of item2.value">
-          <input [(ngModel)]="item2.section" [ngModelOptions]="{standalone: true}" name="{{item2.section}}" name="{{item2.section}}" type="radio" value="{{radiovalue}}">{{radiovalue}}
+          <input   type="radio" value="{{radiovalue}}">{{radiovalue}}
 
         </div>
       </div>
@@ -76,8 +76,8 @@
 
       <div *ngIf="item2.type==='switch'">
         <div *ngFor="let switchvalue of item2.value">
-          <ion-label *ngIf="item2.type==='switch'">Oui</ion-label>
-          <input [(ngModel)]="item2.section" [ngModelOptions]="{standalone: true}" name="{{item2.section}}" type="checkbox" value="{{switchvalue}}">
+          <ion-label *ngIf="item2.type==='switch'"></ion-label>
+          <ion-checkbox [(ngModel)]="item2.section" [ngModelOptions]="{standalone: true}" name="{{item2.section}}"></ion-checkbox>
         </div>
       </div>
 

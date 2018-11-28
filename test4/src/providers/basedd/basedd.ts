@@ -15,6 +15,7 @@ export class BaseddProvider {
   private _service$: any;
   private _db: any;
   private _serviceRef: any;
+  
 
   constructor() {
     console.log('Hello ServiceProvider Provider');
@@ -26,6 +27,7 @@ export class BaseddProvider {
   get service(){
     return this._service$;
   }
+  
 
   handleData(snap){
     // Do something with the data
