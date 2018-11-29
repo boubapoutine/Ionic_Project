@@ -21,40 +21,13 @@
   <h1> Vous avez choisi le service : {{currentService}}</h1>
   <hr>
 
-  <div *ngFor="let item of items">
+  <div *ngFor="let item of data">
 
     <form *ngIf="item.title===currentService">
       <legend *ngIf="item.title===currentService">
         {{item.title}}
       </legend>
-<!---
-      <div *ngFor="let item2 of item.elements">
-        <ion-input [(ngModel)]="item2.value" [ngModelOptions]="{standalone: true}" type="text" placeholder="{{item2.value}}"
-          *ngIf="item2.type==='edit'"></ion-input>
 
-        <div *ngIf="item2.type==='button'">
-          <div style="float: left;" *ngFor="let buttonvalue of item2.value">
-            <button ion-button   type="button" value="{{item2.value}}" *ngIf="item2.type==='button'">{{item2.value}}</button></div>
-        </div>
-        
-        <ion-label *ngIf="item2.type==='label'">{{item2.value}}</ion-label>
-
-        <div *ngIf="item2.type==='radioGroup'">
-          <div *ngFor="let radiovalue of item2.value">
-            <input [(ngModel)]="item2.section" [ngModelOptions]="{standalone: true}" name="{{item2.section}}" type="radio"
-              value="{{radiovalue}}">{{radiovalue}}
-          </div>
-        </div>
-
-
-        <div *ngIf="item2.type==='switch'">
-          <div *ngFor="let switchvalue of item2.value">
-            <ion-checkbox [(ngModel)]="item2.section" [ngModelOptions]="{standalone: true}"></ion-checkbox>
-          </div>
-        </div>
-
-      </div>
-    -->
     <div *ngFor="let item2 of item.elements">
 
 
@@ -68,7 +41,7 @@
 
       <div *ngIf="item2.type==='radioGroup'">
         <div *ngFor="let radiovalue of item2.value">
-          <input   type="radio" value="{{radiovalue}}">{{radiovalue}}
+          <input   [(ngModel)]="item2.section" [ngModelOptions]="{standalone: true}" name="{{item2.section}}" name="{{item2.section}}" type="radio" value="{{radiovalue}}">{{radiovalue}}
 
         </div>
       </div>

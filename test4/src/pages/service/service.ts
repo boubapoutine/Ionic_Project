@@ -1,8 +1,9 @@
 import { Component} from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
+//import { Observable } from 'rxjs/Observable';
 import { Events,ToastController  } from 'ionic-angular';
+import {Service} from '../../model/service.model';
 
 /**
  * Generated class for the ServicePage page.
@@ -20,28 +21,18 @@ import { Events,ToastController  } from 'ionic-angular';
 export class ServicePage {
   public items:any;
   public selected_service:String;
+  data: any[];
   
  
   constructor(private toastCtrl: ToastController,public events: Events,public navCtrl: NavController, public navParams: NavParams, public http: HttpClient) {
-    this.getData();
+   this.data = Service.services;
+    
   }
-  getData(){
-    let url = 'assets/Data/service.json';
-    //let url = 'https://jsonplaceholder.typicode.com/photos';
-    let data: Observable<any> = this.http.get(url);
-    data.subscribe(result => {
-      this.items = result.services;
-      console.log(result.services);
   
-  });
-  }
-
   setService(x){
     console.log('Service created!')
     this.events.publish('service:created', x, Date.now());
-    /*
-    this.selected_service=x;
-    alert(this.selected_service);*/
+    
     this.presentToast("Vous avez selectionner " + x);
   }
  

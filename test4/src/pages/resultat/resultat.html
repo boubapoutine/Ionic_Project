@@ -1,22 +1,22 @@
- <ion-header>
-  <ion-navbar *navbar>
-    <ion-title>
-      Resultat
-    </ion-title>
-  </ion-navbar>
-</ion-header>
+ <head>
+  <link href="assets/form.css" rel="stylesheet">
+</head>
 
-<ion-content padding class="resultat">
+<ion-content padding>
   <ion-list *ngIf="items">
     <ion-item *ngFor="let ser of items">
       
         
         <div *ngFor="let item2 of ser">
-            <div *ngIf="item2.title=='Netflix'">
+            <div *ngIf="item2.title== currentService">
             <div *ngFor="let item3 of item2.elements">              
                   
-                  <span>{{item3.value}}</span>
-                  </div>
+                <span *ngIf="item3.type==='edit'">{{item3.value}}</span>	           
+                <span *ngIf="item3.type==='button'" >{{item3.value}}</span>	                        
+                <!-- <span *ngIf="item3.type==='label'">{{item3.value}}</span>	                   -->
+                <span *ngIf="item3.type==='radioGroup'">{{item3.section}}</span>	                 
+                <span *ngIf="item3.type==='switch'">{{item3.value}}</span>
+            </div>
 
             </div>
           </div>
