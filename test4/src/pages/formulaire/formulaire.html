@@ -16,46 +16,62 @@
 <head>
   <link href="assets/form.css" rel="stylesheet">
 </head>
-<ion-content padding>
+<ion-content padding class="pageForm">
+<div *ngIf="currentService==='asmae'" class="videpage">
+ Vous n'avez choisi aucun service
+</div>
+  <!--h1> Vous avez choisi le service : {{currentService}}</h1-->
+  
 
-  <h1> Vous avez choisi le service : {{currentService}}</h1>
-  <hr>
-
-  <div *ngFor="let item of data">
+  <div *ngFor="let item of items">
 
     <form *ngIf="item.title===currentService">
-      <legend *ngIf="item.title===currentService">
-        {{item.title}}
-      </legend>
-
-    <div *ngFor="let item2 of item.elements">
-
-
-
-      <ion-input [(ngModel)]="item2.value" [ngModelOptions]="{standalone: true}" type="text" placeholder="{{item2.value}}" *ngIf="item2.type==='edit'"></ion-input>
-      <div *ngIf="item2.type==='button'">
-        <div style="float: left;" *ngFor="let buttonvalue of item2.value">
-          <button ion-button type="button" value="{{item2.value}}" *ngIf="item2.type==='button'">{{item2.value}}</button></div>
+      <!--le titre-->
+      <div class="ancienlegend" *ngIf="item.title===currentService">
+       Vous avez choisi {{item.title}}
       </div>
-      <ion-label *ngIf="item2.type==='label'">{{item2.value}}</ion-label>
 
-      <div *ngIf="item2.type==='radioGroup'">
-        <div *ngFor="let radiovalue of item2.value">
-          <input   [(ngModel)]="item2.section" [ngModelOptions]="{standalone: true}" name="{{item2.section}}" name="{{item2.section}}" type="radio" value="{{radiovalue}}">{{radiovalue}}
+    <!--les input-->
+    <div *ngFor="let item2 of item.elements">
+      <ion-input [(ngModel)]="item2.value" [ngModelOptions]="{standalone: true}" type="text" placeholder="{{item2.value}}" *ngIf="item2.type==='edit'"></ion-input>
+    </div>
 
+    <!--les bouttons-->
+    <div *ngFor="let item2 of item.elements">
+      <div *ngIf="item2.type==='button'">
+        <div  style=" float: none;clear: right;display: inline;" *ngFor="let buttonvalue of item2.value">
+          <button ion-button type="button" value="{{item2.value}}" *ngIf="item2.type==='button'">{{item2.value}}</button>
         </div>
       </div>
+    </div>
 
+    <!--label-->
+    <div *ngFor="let item2 of item.elements">
+      <ion-label class="label" *ngIf="item2.type==='label'">{{item2.value}}</ion-label>
+     
+      <!--radiogroups-->
+      <div *ngIf="item2.type==='radioGroup'">
+        <div class="espacegroup">
+        <div *ngFor="let radiovalue of item2.value" >
+            <label class="container">{{radiovalue}}
+          <input  [(ngModel)]="item2.section"   type="radio" name ="{{item2.section}}" value="{{radiovalue}}"><br>
+          <span class="checkmark"></span>
+          </label>
+        </div>
+      </div>
+      
+</div>
 
       <div *ngIf="item2.type==='switch'">
         <div *ngFor="let switchvalue of item2.value">
-          <ion-label *ngIf="item2.type==='switch'"></ion-label>
+          <div *ngIf="item2.type==='switch'">
           <ion-checkbox [(ngModel)]="item2.section" [ngModelOptions]="{standalone: true}" name="{{item2.section}}"></ion-checkbox>
+            </div>
         </div>
       </div>
 
     </div>
-      <button ion-button type="submit" block clear (click)="save()">Valider</button>
+      <button ion-button type="submit" block (click)="save()">Valider</button>
     </form>
   </div>
 
