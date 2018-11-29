@@ -26,10 +26,12 @@ export class FormulairePage  {
   public currentService:String;
   data: any[];
   constructor(public events: Events, public http: HttpClient,public navCtrl: NavController, public navParams: NavParams, public _baseddProvider: BaseddProvider,private toastCtrl: ToastController) {
+    this.currentService='null';
     this.data = Service.services;
     events.subscribe('service:created', (x, time) => {
       // user and time are the same arguments passed in `events.publish(user, time)`
       this.currentService=x;
+      
       console.log('Welcome', x, 'at', time);
     });
   }

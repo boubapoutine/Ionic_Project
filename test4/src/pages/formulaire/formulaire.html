@@ -17,13 +17,13 @@
   <link href="assets/form.css" rel="stylesheet">
 </head>
 <ion-content padding class="pageForm">
-<div *ngIf="currentService==='asmae'" class="videpage">
+<div *ngIf="currentService==='null'" class="videpage">
  Vous n'avez choisi aucun service
 </div>
   <!--h1> Vous avez choisi le service : {{currentService}}</h1-->
   
 
-  <div *ngFor="let item of items">
+  <div *ngFor="let item of data">
 
     <form *ngIf="item.title===currentService">
       <!--le titre-->
