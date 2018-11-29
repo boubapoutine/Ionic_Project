@@ -21,12 +21,12 @@ export class HomePage {
 
  pages = [
   
-    {    pageName : "ServicePage" , icon:"ios-desktop" ,tabTitle:"Newdetail",title:"Services"  },
+    {    pageName : "ServicePage" , icon:"ios-home" ,tabTitle:"Newdetail",title:"Services"  },
   
  
-  {    pageName : "FormulairePage" , icon:"ios-bookmark",tabTitle:"Inbox",title:"Formulaire"   },
-  {    pageName : "ResultatPage" , icon:"ios-color-wand" ,tabTitle:"Newdetail",title:"Résultat"  },
-   {    pageName : "DevPage" , icon:"ios-build" , tabTitle:"help",title:"Développeur" }
+  {    pageName : "FormulairePage" , icon:"ios-create",tabTitle:"Inbox",title:"Formulaire"   },
+  {    pageName : "ResultatPage" , icon:"md-list" ,tabTitle:"Newdetail",title:"Résultat"  },
+   {    pageName : "DevPage" , icon:"ios-people" , tabTitle:"help",title:"Développeur" }
  ];
  SelectedTabe = 0;
  onTabSelect(ev:any){
