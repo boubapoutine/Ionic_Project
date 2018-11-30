@@ -10,6 +10,8 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { BaseddProvider } from '../providers/basedd/basedd';
+import { Device } from '@ionic-native/device';
+import { ExtendedDeviceInformation } from '@ionic-native/extended-device-information';
 
 
 @NgModule({
@@ -32,6 +34,8 @@ import { BaseddProvider } from '../providers/basedd/basedd';
   ],
   providers: [
     StatusBar,
+    Device,
+    ExtendedDeviceInformation,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     BaseddProvider

@@ -4,10 +4,19 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
+
+<style type="text/css">
+  #help_icon {
+    	position: fixed;
+		  bottom: 0;
+		  right: 5px;
+      }
+</style>
 <ion-header no-border>
 
   <ion-navbar color="danger">
     <ion-title>{{pages[SelectedTabe].title}}</ion-title>
+    <ion-icon (click)="InfoMemory()" id="help_icon"><img src="./assets/icon/help_icon.png"/></ion-icon>
   </ion-navbar>
 
 </ion-header>

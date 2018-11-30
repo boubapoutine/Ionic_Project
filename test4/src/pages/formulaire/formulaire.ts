@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController} from 'ionic-angular';
+import { IonicPage, NavController, NavParams} from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 //import { Observable } from 'rxjs/Observable';
 import { Events } from 'ionic-angular';
@@ -25,7 +25,7 @@ export class FormulairePage  {
   
   public currentService:String;
   data: any[];
-  constructor(private alertCtrl: AlertController,public events: Events, public http: HttpClient,public navCtrl: NavController, public navParams: NavParams, public _baseddProvider: BaseddProvider,private toastCtrl: ToastController) {
+  constructor(private alertCtrl: AlertController,public events: Events, public http: HttpClient,public navCtrl: NavController, public navParams: NavParams, public _baseddProvider: BaseddProvider) {
     this.currentService='null';
     this.data = Service.services;
     events.subscribe('service:created', (x, time) => {
@@ -43,7 +43,7 @@ export class FormulairePage  {
   presentAlert() {
     let alert = this.alertCtrl.create({
       
-      subTitle: 'Le formulaire a été envoyer',
+      subTitle: 'Le formulaire a été enregistrer',
       buttons: ['ok']
     });
     alert.present();
@@ -56,6 +56,15 @@ export class FormulairePage  {
     { 
       console.log('Service saved')
     }
+  }
+
+  doRefresh(refresher) {
+    console.log('Begin async operation', refresher);
+
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      refresher.complete();
+    }, 2000);
   }
 
 }
