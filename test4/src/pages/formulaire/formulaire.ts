@@ -7,7 +7,7 @@ import { Events } from 'ionic-angular';
 import {BaseddProvider} from '../../providers/basedd/basedd';
 //import {ServicePage} from '../../pages/service/service';
 import {Service} from '../../model/service.model';
-
+import { AlertController } from 'ionic-angular';
 
 /**
  * Generated class for the FormulairePage page.
@@ -25,7 +25,7 @@ export class FormulairePage  {
   
   public currentService:String;
   data: any[];
-  constructor(public events: Events, public http: HttpClient,public navCtrl: NavController, public navParams: NavParams, public _baseddProvider: BaseddProvider,private toastCtrl: ToastController) {
+  constructor(private alertCtrl: AlertController,public events: Events, public http: HttpClient,public navCtrl: NavController, public navParams: NavParams, public _baseddProvider: BaseddProvider,private toastCtrl: ToastController) {
     this.currentService='null';
     this.data = Service.services;
     events.subscribe('service:created', (x, time) => {
@@ -40,8 +40,18 @@ export class FormulairePage  {
     console.log('ionViewDidLoad FormulairePage');
   }
 
+  presentAlert() {
+    let alert = this.alertCtrl.create({
+      
+      subTitle: 'Le formulaire a été envoyer',
+      buttons: ['ok']
+    });
+    alert.present();
+  }
+
   save(){
     var key = this._baseddProvider.save(this.data);
+    this.presentAlert();
     if(key)
     { 
       console.log('Service saved')
